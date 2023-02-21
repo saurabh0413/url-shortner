@@ -1,0 +1,26 @@
+{
+  "name": "url-shortner-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saurabh0413/url-shortner-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saurabh0413/url-shortner-backend/issues"
+  },
+  "homepage": "https://github.com/saurabh0413/url-shortner-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "json-web-token": "^3.2.0",
+    "mongoose": "^6.9.2",
+    "nodemon": "^2.0.20"
+  }
+}
