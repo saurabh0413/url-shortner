@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>URl shortner</h1>
+    <form action="">
+      <input type="text" placeholder="enter/paste url" id="texturl" />
+
+      <button>Generate-link</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Full URL</th>
+          <th>Short URL</th>
+          <th>Clicked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="">www.google.com</a></td>
+          <td><a href="">lfnkldjf</a></td>
+          <td>2</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+<script>
+  getData();
+  let appendData = document.querySelector("tbody");
+  async function getData() {
+    const links = await fetch("http://localhost:8080/links");
+    const alllink = await links.json();
+    mapData(alllink);
+  }
+  function mapData(data) {
+    data.map((item) => {
+      `<tr>
+            <td>${item.full}</td>
+            <td>${item.short}</td>
+            <td>${item.click}</td>
+                </tr>`;
+    });
+  }
+  document.querySelector("button").addEventListener("click", (e) => {
+    e.preventDefault();
+    let mytext = document.querySelector("#texturl").value;
+    fetch("/post", {
+      method: "POST",
+      body: JSON.stringify({ full: mytext }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res, "res"));
+  });
+</script>
