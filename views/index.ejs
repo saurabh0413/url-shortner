@@ -22,32 +22,18 @@
         </tr>
       </thead>
       <tbody>
+        <% alllinks.forEach((item)=>{ %>
         <tr>
-          <td><a href="">www.google.com</a></td>
-          <td><a href="">lfnkldjf</a></td>
-          <td>2</td>
+          <td><a href="<%=item.full %>"><%=item.full %></a></td>
+          <td><a href="<%=item.short %>" target="_blank"><%=item.short %></a></td>
+          <td><a href="<%=item.click %>"><%=item.click %></a></td>
         </tr>
+        <% }) %>
       </tbody>
     </table>
   </body>
 </html>
 <script>
-  getData();
-  let appendData = document.querySelector("tbody");
-  async function getData() {
-    const links = await fetch("http://localhost:8080/links");
-    const alllink = await links.json();
-    mapData(alllink);
-  }
-  function mapData(data) {
-    data.map((item) => {
-      `<tr>
-            <td>${item.full}</td>
-            <td>${item.short}</td>
-            <td>${item.click}</td>
-                </tr>`;
-    });
-  }
   document.querySelector("button").addEventListener("click", (e) => {
     e.preventDefault();
     let mytext = document.querySelector("#texturl").value;
@@ -57,8 +43,6 @@
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res, "res"));
+    }).then((res) => res.json());
   });
 </script>
