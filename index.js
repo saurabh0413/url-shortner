@@ -20,7 +20,6 @@ app.post("/post", async (req, res) => {
 });
 
 app.get("/:id", async (req, res) => {
-  console.log("her");
   const shorturl = await ShortModel.findOne({ short: req.params.id });
   shorturl.click++;
   shorturl.save()

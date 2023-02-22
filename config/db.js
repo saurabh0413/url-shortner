@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
-const connection = mongoose.connect("mongodb://127.0.0.1:27017/url-shortner");
+const connection = mongoose.connect(
+  "mongodb+srv://saurabh:saurabh@cluster0.cuutuys.mongodb.net/url-shortner"
+);
 
 module.exports = { connection };
